@@ -1,2 +1,2 @@
 # tutorialR
-The tutorials provide codes and samples for beginners to learn R and RStudio.
+The tutorials provide codes and samples for beginners (like myself) to learn R and RStudio.
