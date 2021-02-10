@@ -38,18 +38,59 @@ plot(dnorm,-3,3,
 
 ## Part 2. Bar charts
 
+head(mtcars)
 
+# Create a summary table using table()
+cylinders <- table(mtcars$cyl)
+# mtcars$cyl: 6 6 4 6 8 6 8 4 4 6 6 8 8 8 8 8 8 4 4 4 4 8 8 8 8 4 4 4 8 6 8 4
+# table(mtcars$cyl), cylinders:
+# 4  6  8 
+# 11  7 14
+# The "table" command automatically grouped the mtcars$cyl into 3 different categories
 
+# bar plot the table
+barplot(cylinders)
+plot(cylinders) # "line" shape bar 
 
+## Part 3. Histogram
 
+# Simple histogram
+hist(iris$Sepal.Length)
 
+# Plot with selector
+hist(iris$Petal.Width[iris$Species=="setosa"], # selector
+     xlim = c(0,3), # x axis range
+     breaks = 9,
+     main = "Petal Width for Sentosa",
+     xlab = "",
+     col = "red"
+     )
 
+# Subplots
+par(mfrow = c(3,1))
+hist(iris$Petal.Width[iris$Species=="setosa"], # selector
+     xlim = c(0,3), # x axis range
+     breaks = 9,
+     main = "Petal Width for Sentosa",
+     xlab = "",
+     col = "red"
+)
+hist(iris$Petal.Width[iris$Species =="versicolor"], # selector
+     xlim = c(0,3), # x axis range
+     breaks = 9,
+     main = "Petal Width for Vercicolor",
+     xlab = "",
+     col = "purple"
+)
+hist(iris$Petal.Width[iris$Species=="virginica"], # selector
+     xlim = c(0,3), # x axis range
+     breaks = 9,
+     main = "Petal Width for Virginica",
+     xlab = "",
+     col = "blue"
+)
 
+# Roll-back subplot
+par(mfrow=c(1,1))
 
-
-
-
-
-
-
-
+detach("package:datasets", unload = TRUE)
