@@ -22,9 +22,19 @@ hist(lynx,
      col = "thistle1"
      )
 
-# To be superimposed
+# Add normal distribution curve and to be superimposed
 curve(dnorm(x,mean=mean(lynx),sd=sd(lynx)),
       col = "thistle4",
       lwd = 2, # line width
       add = TRUE # superimpose to the previous figure
       )
+
+# Add kernel density estimation result using command density()
+lines(density(lynx),
+      col = "blue",
+      lwd = 2
+)
+
+# Add rug
+rug(lynx,lwd=1,col="grey")
+
