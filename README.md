@@ -21,3 +21,8 @@ __This tutorial mainly serves as demonstrations of simple use cases of R and R s
 ## Acknowledgement
 ---
 My special thanks goes to YouTube channel [freeCodeCamp.org](https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ) video titled [R Programming Tutorial - Learn the Basics of Statistical Computing](https://youtu.be/_V8eKsto3Ug), as that is where my journey on R started.
+
+## Notes
+---
+* Switch git remote from HTTPS to SSH
+
