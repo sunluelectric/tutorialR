@@ -1,6 +1,6 @@
-### File: lesson101.R
+### File: lesson01.R
 
-# NOTE: R is CASE SENSITIVE!!!
+# (Note: R is CASE SENSITIVE!!!)
 
 ## Part 1: Load data sets from build-in library, and analyze/visualize the data.
 
@@ -8,7 +8,7 @@
 library(datasets)
 
 # Display partial of the data
-# Note: iris is a data set pre-defined in datasets
+# (Note: iris is a data set pre-defined in datasets)
 head(iris)
 
 # Display statistical information of the data
