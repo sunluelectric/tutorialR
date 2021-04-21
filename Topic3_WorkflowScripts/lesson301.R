@@ -58,12 +58,52 @@ View(new_year_flights)
 # Logic operator AND and OR is given by "," and "|" respectively.
 # The logic expression can be given in complicated form, such as
 # 3.2:
-ontime_flight = filter(flights, !(arr_delay > 0 | dep_delay > 0))
-View(ontime_flight)
+ontime_flights = filter(flights, !(arr_delay > 0 | dep_delay > 0))
+View(ontime_flights)
 # "NA" is a special value. Most operations based on "NA" will return "NA". Use
 # is.na(x) to check whether x is NA.
 
-## Exp4: 
+## Exp4: Re-arrange the rows in a table, following particular order of an 
+# attribute.
+rearrange_flights <- arrange(flights, dep_time)
+View(rearrange_flights)
+rearrange_flights <- arrange(flights, desc(dep_time))
+View(rearrange_flights)
+rearrange_flights <- arrange(flights, year, months)
+View(rearrange_flights)
+# Explanation to Exp4:
+# Function arrange() can sort the rows in a table, based on the specified
+# attribute. However, it will not change the order of attribute.
+# Attribute with value "NA" will be sorted at last.
+
+## Exp5: Create a table with only selected attributes.
+selected_attribute_flight <- select(flights, year, month, day, carrier, ends_with("delay"))
+View(selected_attribute_flight)
+selected_attribute_flight <- select(flights, time_hour, everything())
+View(selected_attribute_flight)
+# Explanation to Exp5:
+# Use select() to select (or rename) the attributes that is to be appeared in
+# the new table.
+# Use "everything()" to represents everything else other than those attributes
+# already appeared. This is used to change the order of the attribute and put
+# a few of them to the front.
+
+## Exp6: Add a new attribute z to the table. Variable z is a function of existing
+# attributes x and y.
+tab1 <- select(flights, year:day, distance, air_time)
+tab2 <- mutate(tab1, speed1=distance/air_time, speed2=speed1*60)
+View(tab2)
+tab3 <- transmute(tab1, speed1=distance/air_time, speed2=speed1*60)
+View(tab3)
+# Explanation to Exp6:
+# Function mutate will append new attributes to a table.
+# Function transmute will create and use only new attributes in the table.
+# Commonly used arithmetic operators: +, -, *, /, ^, %/% (integer division),
+# %% (remainder), log(), log2(), log10(), lead(), lag(), cumsum(), cumprod(),
+# commin(), commax(), commean(), etc.
+# "na.rm==TRUE" argument removes NA values during the calculation.
+
+
 
 
 
