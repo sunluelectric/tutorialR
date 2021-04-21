@@ -16,7 +16,7 @@ head(mpg)
 ## Exp1: Visualize x-y in a 2-D plot where x, y are continuous values.
 # 1-1:
 ggplot(data=mpg) +
-  geom_point(mapping=aes(x=displ, y=hwy), color="black")
+  geom_point(mapping=aes(x=displ, y=hwy), color="black", position='jitter')
 # 1-2:
 ggplot(data=mpg, mapping=aes(x=displ, y=hwy)) +
   geom_point(mapping=aes(), color="black")
@@ -31,7 +31,7 @@ ggplot(data=mpg, mapping=aes(x=displ, y=hwy)) +
 # category value.
 # 2-1:
 ggplot(data=mpg) +
-  geom_point(mapping=aes(x=displ, y=hwy, color=class))
+  geom_point(mapping=aes(x=displ, y=hwy, color=class), position='jitter')
 # 2-2:
 ggplot(data=mpg, mapping=aes(x=displ, y=hwy)) +
   geom_point(mapping=aes(color=class))
