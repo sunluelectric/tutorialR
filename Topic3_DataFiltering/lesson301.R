@@ -69,8 +69,6 @@ rearrange_flights <- arrange(flights, dep_time)
 View(rearrange_flights)
 rearrange_flights <- arrange(flights, desc(dep_time))
 View(rearrange_flights)
-rearrange_flights <- arrange(flights, year, months)
-View(rearrange_flights)
 # Explanation to Exp4:
 # Function arrange() can sort the rows in a table, based on the specified
 # attribute. However, it will not change the order of attribute.
@@ -101,11 +99,26 @@ View(tab3)
 # Commonly used arithmetic operators: +, -, *, /, ^, %/% (integer division),
 # %% (remainder), log(), log2(), log10(), lead(), lag(), cumsum(), cumprod(),
 # commin(), commax(), commean(), etc.
+
+# Exp7: Calculate the mean of attribute x in a table (for x!= NA)
+# 7-1:
+summarize(flights, delay=mean(dep_delay, na.rm=TRUE))
+summarize(flights, delay=mean(dep_delay[dep_delay>0], na.rm=TRUE))
+# Explanation to Exp7:
+# Use summarize() to get the statistics summarize of attribute(s). 
 # "na.rm==TRUE" argument removes NA values during the calculation.
-
-
-
-
+# It is possible to use group_by() to first group the entire table then 
+# calculates the statistics of each group separately, e.g.
+# 7-2:
+flights_by_months = group_by(flights, year, month)
+delay_by_months <- summarize(flights_by_months, delay=mean(dep_delay, na.rm=TRUE), n=n())
+View(delay_by_months)
+ggplot(data=delay_by_months, mapping=aes(x=month, y=delay)) +
+  geom_smooth(se=FALSE)
+ggplot(data=delay_by_months, mapping=aes(x=n, y=delay)) +
+  geom_point()
+# Some useful statistics operators are: mean(), sd(), IQR(), mad(), min(),
+# max(), quantile(). Use sum(!is.na(x)) to calculate non-NA attribute x number.
 
 
 
