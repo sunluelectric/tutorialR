@@ -48,3 +48,26 @@ summarize(flights, delay = mean(dep_delay[dep_delay>0], na.rm = TRUE))
 flights_by_months <- group_by(flights, year, month)
 delay_by_months <- summarize(flights_by_months, delay  = mean(dep_delay, na.rm=TRUE), n=n())
 View(delay_by_months)
+
+# Use "%>%" to pipe data
+small_diamonds <- filter(diamonds, carat < 1)
+head(small_diamonds)
+small_diamonds <- diamonds %>%
+  filter(carat < 1)
+head(small_diamonds)
+
+unusual <- diamonds %>%
+  filter(y < 3 | y > 20) %>%
+  select(price, x, y, z) %>%
+  arrange(y)
+View(unusual)
+usual <- diamonds %>%
+  filter(between(y, 3, 20)) %>%
+  select(price, x, y, z) %>%
+  arrange(y)
+View(usual)
+
+
+
+
+
