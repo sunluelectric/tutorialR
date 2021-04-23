@@ -40,11 +40,11 @@ View(tab3)
 # commin(), commax(), commean(), etc.
 
 # Calculate statistics of a table attribute
-summarize(flights, delay=mean(dep_delay, na.rm=TRUE))
-summarize(flights, delay=mean(dep_delay[dep_delay>0], na.rm=TRUE))
+summarize(flights, delay = mean(dep_delay, na.rm=TRUE))
+summarize(flights, delay = mean(dep_delay[dep_delay>0], na.rm = TRUE))
 # The above calculates the statistics of the attribute from the entire table.
-# It is also possilbe to group the table first, then calculate the statistics
+# It is also possible to group the table first, then calculate the statistics
 # of the attribute for each group separately.
-flights_by_months = group_by(flights, year, month)
-delay_by_months <- summarize(flights_by_months, delay=mean(dep_delay, na.rm=TRUE), n=n())
+flights_by_months <- group_by(flights, year, month)
+delay_by_months <- summarize(flights_by_months, delay  = mean(dep_delay, na.rm=TRUE), n=n())
 View(delay_by_months)
